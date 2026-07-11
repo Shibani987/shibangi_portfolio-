@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graphic Design | Portfolio</title>
+    <title>{{ category.name|default:"Portfolio Category" }} | Portfolio</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
@@ -29,8 +29,13 @@
     <header class="product-hero">
         <div class="container">
             <a href="{% url 'home' %}" class="back-link">&larr; Back to Home</a>
-            <h1>Graphic <span class="accent">Design</span></h1>
-            <p>Crafting visual identities, layouts, and polished creative systems with clarity and impact.</p>
+            {% if category %}
+                <h1>{{ category.name }}</h1>
+                <p>{{ category.description }}</p>
+            {% else %}
+                <h1>Portfolio Category</h1>
+                <p>Explore sub categories and selected work.</p>
+            {% endif %}
         </div>
     </header>
 
@@ -43,7 +48,7 @@
                         <p>{{ subcategory.description }}</p>
                     </a>
                 {% empty %}
-                    <p class="empty-state">No graphic design sub categories added yet.</p>
+                    <p class="empty-state">No sub categories added yet.</p>
                 {% endfor %}
             </div>
         </section>

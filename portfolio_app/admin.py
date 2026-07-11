@@ -4,13 +4,6 @@ from django.utils.html import format_html
 from .models import Category, Education, Experience, HighlightPost, ProductCategory, ProductItem, SiteProfile, SubCategory
 
 
-class DirectProductCategoryInline(admin.TabularInline):
-    model = ProductCategory
-    extra = 1
-    fields = ("name", "description", "order")
-    fk_name = "category"
-
-
 class SubCategoryInline(admin.TabularInline):
     model = SubCategory
     extra = 1
@@ -26,13 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ("name", "description")
     readonly_fields = ("image_preview",)
     fields = ("name", "slug", "description", "image", "image_preview", "order")
-
-    def get_inline_instances(self, request, obj=None):
-        if obj and obj.slug == "graphic-design":
-            inline_classes = (SubCategoryInline,)
-        else:
-            inline_classes = (DirectProductCategoryInline,)
-        return [inline(self.model, self.admin_site) for inline in inline_classes]
+    inlines = (SubCategoryInline,)
 
     @admin.display(description="Preview")
     def image_preview(self, obj):
@@ -58,11 +45,6 @@ class SubCategoryAdmin(admin.ModelAdmin):
     fields = ("category", "name", "slug", "description", "order")
     inlines = (SubCategoryProductCategoryInline,)
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "category":
-            kwargs["queryset"] = Category.objects.filter(slug="graphic-design")
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
 
 class ProductItemInline(admin.TabularInline):
     model = ProductItem
@@ -73,21 +55,19 @@ class ProductItemInline(admin.TabularInline):
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "parent_name", "order")
-    list_filter = ("category", "subcategory")
+    list_filter = ("subcategory__category", "subcategory")
     list_editable = ("order",)
     search_fields = ("name", "description", "category__name", "subcategory__name")
-    fields = ("category", "subcategory", "name", "description", "order")
+    fields = ("subcategory", "name", "description", "order")
     inlines = (ProductItemInline,)
 
     @admin.display(description="Parent")
     def parent_name(self, obj):
-        return obj.subcategory or obj.category
+        return obj.subcategory
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "category":
-            kwargs["queryset"] = Category.objects.exclude(slug="graphic-design")
         if db_field.name == "subcategory":
-            kwargs["queryset"] = SubCategory.objects.filter(category__slug="graphic-design")
+            kwargs["queryset"] = SubCategory.objects.select_related("category")
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 

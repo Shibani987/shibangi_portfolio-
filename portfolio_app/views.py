@@ -67,21 +67,16 @@ def like_highlight(request, pk):
 
 
 def product_page(request, slug):
-    if slug == "graphic-design":
-        category = Category.objects.filter(slug=slug).first()
-        subcategories = SubCategory.objects.filter(category=category) if category else SubCategory.objects.none()
+    category = Category.objects.filter(slug=slug).prefetch_related("subcategories").first()
+    if category:
         return render(
             request,
             "products/graphic-design.html",
-            {"category": category, "subcategories": subcategories},
+            {"category": category, "subcategories": category.subcategories.all()},
         )
 
-    category = Category.objects.filter(slug=slug).prefetch_related("product_categories__products").first()
-    if category:
-        return render(request, "products/category.html", {"category": category})
-
     subcategory = (
-        SubCategory.objects.filter(slug=slug, category__slug="graphic-design")
+        SubCategory.objects.filter(slug=slug)
         .select_related("category")
         .prefetch_related("product_categories__products")
         .first()
