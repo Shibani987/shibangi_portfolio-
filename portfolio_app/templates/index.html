@@ -183,7 +183,7 @@
                     </svg>
                     <span>ORCID</span>
                 </a>
-                <a href="{% static 'assets/cv.pdf' %}" target="_blank" rel="noopener noreferrer" class="social-link">
+                <a href="{% if site_profile.cv_url %}{{ site_profile.cv_url }}{% else %}{% static 'assets/cv.pdf' %}{% endif %}" target="_blank" rel="noopener noreferrer" class="social-link">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M6 2h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V7h3.5L13 3.5zM8 12h8v2H8v-2zm0 4h5v2H8v-2z"/>
                     </svg>

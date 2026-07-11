@@ -128,6 +128,7 @@ class ProductItem(models.Model):
 class SiteProfile(models.Model):
     name = models.CharField(max_length=120, default="Shibangi Khan")
     about_image = models.ImageField(upload_to="about_images/", blank=True, null=True)
+    cv_url = models.URLField("CV / resume link", blank=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:

@@ -115,9 +115,9 @@ class ProductItemAdmin(admin.ModelAdmin):
 
 @admin.register(SiteProfile)
 class SiteProfileAdmin(admin.ModelAdmin):
-    list_display = ("name", "about_image_preview", "updated_at")
+    list_display = ("name", "cv_url", "about_image_preview", "updated_at")
     readonly_fields = ("about_image_preview", "updated_at")
-    fields = ("name", "about_image", "about_image_preview", "updated_at")
+    fields = ("name", "about_image", "about_image_preview", "cv_url", "updated_at")
 
     def has_add_permission(self, request):
         if SiteProfile.objects.exists():
