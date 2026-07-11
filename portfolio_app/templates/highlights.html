@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Highlights | Shibangi Khan</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">P<span>.</span></div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}" class="nav-btn">Back Home</a>
+        </div>
+    </nav>
+
+    <main class="highlights-page">
+        <div class="highlights-header">
+            <h1 class="section-title">Recent Highlights</h1>
+            <p>These are the latest posts and updates of my life.</p>
+        </div>
+
+        <div class="posts-grid">
+            {% for post in posts %}
+                <article class="post-card">
+                    <a class="post-card-link" href="{{ post.get_absolute_url }}">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.description|truncatechars:95 }}</p>
+                    </a>
+                    <div class="post-meta">
+                        <span>
+                            {% if post.tag %}{{ post.tag }} &bull; {% endif %}{{ post.time_ago }}
+                        </span>
+                        <button
+                            class="like-btn{% if post.id in liked_posts %} liked{% endif %}"
+                            type="button"
+                            data-like-url="{% url 'like_highlight' post.id %}"
+                            {% if post.id in liked_posts %}disabled{% endif %}
+                        >
+                            <span class="heart">&hearts;</span>
+                            <span class="like-count">{{ post.likes_count }}</span>
+                        </button>
+                    </div>
+                </article>
+            {% empty %}
+                <p class="empty-state">No highlights added yet.</p>
+            {% endfor %}
+        </div>
+    </main>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

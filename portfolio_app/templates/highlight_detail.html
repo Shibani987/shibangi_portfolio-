@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} | Recent Highlights</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">P<span>.</span></div>
+        <div class="nav-links">
+            <a href="{% url 'highlights' %}" class="nav-btn">Back</a>
+            <a href="{% url 'home' %}" class="nav-btn">Home</a>
+        </div>
+    </nav>
+
+    <main class="highlight-detail-page">
+        <article class="highlight-detail-card">
+            {% if post.image %}
+                <img class="highlight-detail-image zoomable-image protected-media" src="{{ post.image.url }}" alt="{{ post.title }}" draggable="false">
+            {% endif %}
+
+            <div class="highlight-detail-content">
+                <div class="highlight-detail-meta">
+                    <span>{% if post.tag %}{{ post.tag }} &bull; {% endif %}{{ post.time_ago }}</span>
+                    <button
+                        class="like-btn{% if post.id in liked_posts %} liked{% endif %}"
+                        type="button"
+                        data-like-url="{% url 'like_highlight' post.id %}"
+                        {% if post.id in liked_posts %}disabled{% endif %}
+                    >
+                        <span class="heart">&hearts;</span>
+                        <span class="like-count">{{ post.likes_count }}</span>
+                    </button>
+                </div>
+
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.description }}</p>
+
+                {% if post.document or post.external_link %}
+                    <div class="highlight-detail-actions">
+                        {% if post.document %}
+                            <a href="{{ post.document.url }}" target="_blank" rel="noopener noreferrer">View Document</a>
+                        {% endif %}
+                        {% if post.external_link %}
+                            <a href="{{ post.external_link }}" target="_blank" rel="noopener noreferrer">Open Link</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </article>
+    </main>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

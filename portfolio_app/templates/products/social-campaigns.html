@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Campaigns | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        .product-hero { padding: 12rem 2rem 6rem; text-align: center; }
+        .art-section { max-width: 1200px; margin: 0 auto 4rem; padding: 0 2rem; }
+        .art-section h2 { font-size: 1.8rem; margin-bottom: 0.7rem; color: var(--accent-purple); }
+        .art-section p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .product-item { background: var(--card-bg); border-radius: var(--soft-corner); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .product-img { width: 100%; height: 220px; background: linear-gradient(45deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center; color: var(--accent-purple); font-size: 3rem; }
+        .product-info { padding: 1.5rem; }
+        .back-link { display: inline-block; margin-bottom: 2rem; color: var(--accent-purple); text-decoration: none; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="{% url 'home' %}" style="text-decoration:none; color:inherit;">P<span>.</span></a></div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}" class="nav-btn">Home</a>
+        </div>
+    </nav>
+
+    <header class="product-hero">
+        <div class="container">
+            <a href="{% url 'product_page' 'graphic-design' %}" class="back-link">← Back to Graphic Design</a>
+            <h1>Social <span class="accent">Campaigns</span></h1>
+            <p>Creative campaigns crafted to elevate reach, engagement, and brand reach across social platforms.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="art-section">
+            <h2>Campaign Strategy</h2>
+            <p>High-impact visuals and messaging designed for attention, storytelling, and conversion.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">📣</div>
+                    <div class="product-info">
+                        <h3>Launch Moment</h3>
+                        <p>Bold campaign visuals that balance product presence with confident brand storytelling.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">💡</div>
+                    <div class="product-info">
+                        <h3>Trend Response</h3>
+                        <p>Creative concepts designed for fast-moving social engagement and audience recall.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">&copy; 2026 Portfolio. All rights reserved.</div>
+        </div>
+    </footer>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

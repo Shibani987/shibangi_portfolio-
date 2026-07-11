@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Campaigns | Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        .product-hero {
+            padding: 12rem 2rem 6rem;
+            text-align: center;
+        }
+
+        .product-hero .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .product-hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 1rem;
+        }
+
+        .product-hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .art-section {
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .art-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.7rem;
+            color: var(--accent-purple);
+        }
+
+        .art-section > p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--soft-corner);
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-purple);
+        }
+
+        .product-img {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, rgba(157, 80, 187, 0.2), rgba(255, 255, 255, 0.04));
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="../index.html" style="text-decoration:none; color:inherit;">P<span>.</span></a></div>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-btn">Home</a>
+        </div>
+    </nav>
+
+    <header class="product-hero">
+        <div class="container">
+            <a href="graphic-design.html" class="back-link">← Back to Graphic Design</a>
+            <h1>Social Campaigns</h1>
+            <p>Campaign-ready visuals for digital presence, ads, and promotional storytelling.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="art-section">
+            <h2>Flyers</h2>
+            <p>Eye-catching flyer designs that communicate messages effectively and attract attention.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/flyer-1.jpg" alt="Sunset Boulevard">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sunset Boulevard</h3>
+                        <p>A vibrant flyer design featuring a stunning sunset over a city skyline.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/flyer-2.jpg" alt="City Lights">
+                    </div>
+                    <div class="product-info">
+                        <h3>Car</h3>
+                        <p>A dynamic flyer design showcasing a sleek automobile in a modern urban setting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="art-section">
+            <h2>Social Media Templates</h2>
+            <p>Pre-designed templates for engaging social media content that maintain brand consistency.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/social-template-1.jpg" alt="Quiet Expression">
+                    </div>
+                    <div class="product-info">
+                        <h3>Quiet Expression</h3>
+                        <p>A minimalist social media template with clean lines and a modern font.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/social-template-2.jpg" alt="Punk Style">
+                    </div>
+                    <div class="product-info">
+                        <h3>Punk Style</h3>
+                        <p>A bold and edgy social media template that embodies the spirit of punk culture and rebellion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="art-section">
+            <h2>Ad Banners</h2>
+            <p>Visually compelling ad banners designed to capture attention and drive engagement.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/ad-banner-1.jpg" alt="Ad Banner 1">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ad Banner 1</h3>
+                        <p>A visually compelling ad banner designed to capture attention and drive engagement.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/ad-banner-2.jpg" alt="Ad Banner 2">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ad Banner 2</h3>
+                        <p>A dynamic ad banner design that showcases a bold and eye-catching visual layout.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="art-section">
+            <h2>Event Posters</h2>
+            <p>Striking event poster designs that effectively promote events and capture the audience's interest.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/event-poster-1.jpg" alt="Sunset Boulevard">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sunset Boulevard</h3>
+                        <p>A vibrant event poster design featuring a stunning sunset over a city skyline.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/event-poster-2.jpg" alt="City Lights">
+                    </div>
+                    <div class="product-info">
+                        <h3>City Lights</h3>
+                        <p>A dynamic event poster design showcasing a sleek automobile in a modern urban setting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="art-section">
+            <h2>Infographics</h2>
+            <p>Informative and visually appealing infographics that simplify complex information.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/social-template-1.jpg" alt="Quiet Expression">
+                    </div>
+                    <div class="product-info">
+                        <h3>Quiet Expression</h3>
+                        <p>A minimalist infographic design with clean lines and a modern font.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/social-template-2.jpg" alt="Punk Style">
+                    </div>
+                    <div class="product-info">
+                        <h3>Punk Style</h3>
+                        <p>A bold and edgy infographic design that embodies the spirit of punk culture and rebellion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">&copy; 2026 Portfolio. All rights reserved.</div>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>

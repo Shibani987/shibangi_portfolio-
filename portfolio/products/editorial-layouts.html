@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorial Layouts | Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        .product-hero {
+            padding: 12rem 2rem 6rem;
+            text-align: center;
+        }
+
+        .product-hero .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .product-hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 1rem;
+        }
+
+        .product-hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .art-section {
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .art-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.7rem;
+            color: var(--accent-purple);
+        }
+
+        .art-section > p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--soft-corner);
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-purple);
+        }
+
+        .product-img {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, rgba(157, 80, 187, 0.2), rgba(255, 255, 255, 0.04));
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="../index.html" style="text-decoration:none; color:inherit;">P<span>.</span></a></div>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-btn">Home</a>
+        </div>
+    </nav>
+
+    <header class="product-hero">
+        <div class="container">
+            <a href="graphic-design.html" class="back-link">← Back to Graphic Design</a>
+            <h1>Editorial Layouts</h1>
+            <p>Structured visual storytelling through print-ready and digital editorial design.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="art-section">
+            <h2>E-Book Cover</h2>
+            <p>Compelling book cover designs that capture the essence and tone of the narrative.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/e-book-cover-1.jpg" alt="Mountain Echo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mountain Echo</h3>
+                        <p>A dramatic cover design featuring a majestic mountain range under a vibrant sunset.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/e-book-cover-2.jpg" alt="Alone">
+                    </div>
+                    <div class="product-info">
+                        <h3>Alone</h3>
+                        <p>A contemplative cover design with subtle textures and a serene, introspective mood.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="art-section">
+            <h2>Book Covers</h2>
+            <p>Engaging book cover designs that reflect the genre and narrative of the content.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/book-cover-1.jpg" alt="Quiet Expression">
+                    </div>
+                    <div class="product-info">
+                        <h3>Quiet Expression</h3>
+                        <p>A subtle and introspective cover design that captures the essence of the narrative.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/book-cover-2.jpg" alt="Modern Muse">
+                    </div>
+                    <div class="product-info">
+                        <h3>Modern Muse</h3>
+                        <p>A bold and contemporary cover design that embodies the spirit of modernity and creativity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="art-section">
+            <h2>Magazine Layouts</h2>
+            <p>Dynamic magazine layouts that balance visual appeal with readability and content flow.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/magazine-layout-1.jpg" alt="Fashion Forward">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fashion Forward</h3>
+                        <p>A sleek and stylish magazine layout that highlights fashion trends and photography.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img">
+                        <img src="assets/magazine-layout-2.jpg" alt="Nightlife Chronicles">
+                    </div>
+                    <div class="product-info">
+                        <h3>Nightlife Chronicles</h3>
+                        <p>A vibrant and energetic magazine layout that captures the essence of nightlife culture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">&copy; 2026 Portfolio. All rights reserved.</div>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>

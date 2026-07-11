@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design | Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        .product-hero { padding: 12rem 2rem 6rem; text-align: center; }
+        .category-section { max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .category-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: var(--soft-corner); padding: 2rem; text-decoration: none; color: inherit; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .category-card:hover { transform: translateY(-4px); border-color: var(--accent-purple); }
+        .category-card h3 { margin-bottom: 0.6rem; color: var(--accent-purple); }
+        .category-card p { color: var(--text-muted); line-height: 1.6; }
+        .back-link { display: inline-block; margin-bottom: 2rem; color: var(--accent-purple); text-decoration: none; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="../index.html" style="text-decoration:none; color:inherit;">P<span>.</span></a></div>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-btn">Home</a>
+        </div>
+    </nav>
+
+    <header class="product-hero">
+        <div class="container">
+            <a href="../index.html" class="back-link">← Back to Home</a>
+            <h1>Graphic <span class="accent">Design</span></h1>
+            <p>Crafting visual identities, layouts, and polished creative systems with clarity and impact.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="category-section">
+            <div class="category-grid">
+                <a href="branding.html" class="category-card">
+                    <h3>Branding</h3>
+                    <p>Identity systems, product visuals, logos, and polished business materials.</p>
+                </a>
+                <a href="editorial-layouts.html" class="category-card">
+                    <h3>Editorial Layouts</h3>
+                    <p>Thoughtful print and digital layouts for eBooks, books, and storytelling pieces.</p>
+                </a>
+                <a href="social-campaigns.html" class="category-card">
+                    <h3>Social Campaigns</h3>
+                    <p>Visual campaigns built for banners, templates, and social ad content.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">&copy; 2026 Portfolio. All rights reserved.</div>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
