@@ -125,6 +125,19 @@ class ProductItem(models.Model):
         return self.name
 
 
+class SiteProfile(models.Model):
+    name = models.CharField(max_length=120, default="Shibangi Khan")
+    about_image = models.ImageField(upload_to="about_images/", blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Site profile"
+        verbose_name_plural = "Site profile"
+
+    def __str__(self):
+        return self.name
+
+
 class Education(models.Model):
     STATUS_ONGOING = "ongoing"
     STATUS_COMPLETED = "completed"

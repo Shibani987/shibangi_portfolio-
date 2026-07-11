@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Category, Education, Experience, HighlightPost, ProductCategory, ProductItem, SubCategory
+from .models import Category, Education, Experience, HighlightPost, ProductCategory, ProductItem, SiteProfile, SubCategory
 
 
 class DirectProductCategoryInline(admin.TabularInline):
@@ -110,6 +110,24 @@ class ProductItemAdmin(admin.ModelAdmin):
     def image_preview(self, obj):
         if obj.image:
             return format_html('<img src="{}" style="height: 72px; border-radius: 6px;" />', obj.image.url)
+        return "-"
+
+
+@admin.register(SiteProfile)
+class SiteProfileAdmin(admin.ModelAdmin):
+    list_display = ("name", "about_image_preview", "updated_at")
+    readonly_fields = ("about_image_preview", "updated_at")
+    fields = ("name", "about_image", "about_image_preview", "updated_at")
+
+    def has_add_permission(self, request):
+        if SiteProfile.objects.exists():
+            return False
+        return super().has_add_permission(request)
+
+    @admin.display(description="About image preview")
+    def about_image_preview(self, obj):
+        if obj.about_image:
+            return format_html('<img src="{}" style="height: 96px; border-radius: 8px;" />', obj.about_image.url)
         return "-"
 
 

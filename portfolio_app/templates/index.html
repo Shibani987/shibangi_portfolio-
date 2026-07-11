@@ -59,7 +59,11 @@
                 </div>
                 <div class="about-image">
                     <a href="{% url 'highlights' %}" aria-label="View recent highlights and posts">
-                        <img src="{% static 'assets/portrait.jpg' %}" alt="Portrait of Shibangi Khan">
+                        {% if site_profile.about_image %}
+                            <img src="{{ site_profile.about_image.url }}" alt="Portrait of Shibangi Khan">
+                        {% else %}
+                            <img src="{% static 'assets/portrait.jpg' %}" alt="Portrait of Shibangi Khan">
+                        {% endif %}
                     </a>
                 </div>
             </div>

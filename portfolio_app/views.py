@@ -5,13 +5,14 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 
-from .models import Category, Education, Experience, HighlightLike, HighlightPost, SubCategory
+from .models import Category, Education, Experience, HighlightLike, HighlightPost, SiteProfile, SubCategory
 
 
 def home(request):
     categories = Category.objects.all()
     educations = Education.objects.filter(is_published=True)
     experiences = Experience.objects.filter(is_published=True)
+    site_profile = SiteProfile.objects.first()
     return render(
         request,
         "index.html",
@@ -19,6 +20,7 @@ def home(request):
             "categories": categories,
             "educations": educations,
             "experiences": experiences,
+            "site_profile": site_profile,
         },
     )
 
