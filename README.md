@@ -4,7 +4,7 @@ A Django portfolio website for Shibangi Khan, built to showcase graphic design, 
 
 ## Features
 
-- Admin-managed portfolio hierarchy: categories, sub categories, product categories, and products
+- Admin-managed portfolio hierarchy with optional sub categories
 - Admin-managed education and experience sections
 - Recent highlights with tags, short list previews, detail pages, images, documents, links, and dynamic likes
 - Image viewer with zoom support
@@ -68,7 +68,11 @@ Use `/admin/` to manage:
 
 Highlight posts support optional image, document, and external link fields. The highlights list page stays short, while the detail page shows full content.
 
-Portfolio work follows this structure:
+Portfolio work can follow either structure:
+
+`Category -> Product Category -> Product Item`
+
+or
 
 `Category -> Sub Category -> Product Category -> Product Item`
 

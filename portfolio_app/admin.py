@@ -4,6 +4,13 @@ from django.utils.html import format_html
 from .models import Category, Education, Experience, HighlightPost, ProductCategory, ProductItem, SiteProfile, SubCategory
 
 
+class DirectProductCategoryInline(admin.TabularInline):
+    model = ProductCategory
+    extra = 1
+    fields = ("name", "description", "order")
+    fk_name = "category"
+
+
 class SubCategoryInline(admin.TabularInline):
     model = SubCategory
     extra = 1
@@ -19,7 +26,7 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ("name", "description")
     readonly_fields = ("image_preview",)
     fields = ("name", "slug", "description", "image", "image_preview", "order")
-    inlines = (SubCategoryInline,)
+    inlines = (SubCategoryInline, DirectProductCategoryInline)
 
     @admin.display(description="Preview")
     def image_preview(self, obj):
@@ -55,17 +62,19 @@ class ProductItemInline(admin.TabularInline):
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "parent_name", "order")
-    list_filter = ("subcategory__category", "subcategory")
+    list_filter = ("category", "subcategory__category", "subcategory")
     list_editable = ("order",)
     search_fields = ("name", "description", "category__name", "subcategory__name")
-    fields = ("subcategory", "name", "description", "order")
+    fields = ("category", "subcategory", "name", "description", "order")
     inlines = (ProductItemInline,)
 
     @admin.display(description="Parent")
     def parent_name(self, obj):
-        return obj.subcategory
+        return obj.subcategory or obj.category
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "category":
+            kwargs["queryset"] = Category.objects.all()
         if db_field.name == "subcategory":
             kwargs["queryset"] = SubCategory.objects.select_related("category")
         return super().formfield_for_foreignkey(db_field, request, **kwargs)

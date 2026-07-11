@@ -67,13 +67,9 @@ def like_highlight(request, pk):
 
 
 def product_page(request, slug):
-    category = Category.objects.filter(slug=slug).prefetch_related("subcategories").first()
+    category = Category.objects.filter(slug=slug).prefetch_related("subcategories", "product_categories__products").first()
     if category:
-        return render(
-            request,
-            "products/graphic-design.html",
-            {"category": category, "subcategories": category.subcategories.all()},
-        )
+        return render(request, "products/category.html", {"category": category})
 
     subcategory = (
         SubCategory.objects.filter(slug=slug)

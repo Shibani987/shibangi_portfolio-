@@ -20,15 +20,7 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(f"{self.category.slug}-{self.name}") if self.category_id else slugify(self.name)
-            self.slug = base_slug
-        base_slug = self.slug
-        slug = base_slug
-        counter = 2
-        while SubCategory.objects.filter(slug=slug).exclude(pk=self.pk).exists():
-            slug = f"{base_slug}-{counter}"
-            counter += 1
-        self.slug = slug
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -52,7 +44,15 @@ class SubCategory(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            base_slug = slugify(f"{self.category.slug}-{self.name}") if self.category_id else slugify(self.name)
+            self.slug = base_slug
+        base_slug = self.slug
+        slug = base_slug
+        counter = 2
+        while SubCategory.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        self.slug = slug
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -110,10 +110,8 @@ class ProductCategory(models.Model):
 
     def clean(self):
         super().clean()
-        if not self.subcategory:
-            raise ValidationError("Product categories must be added under a sub category.")
-        if self.category:
-            raise ValidationError("Use sub category only. Direct category product groups are no longer supported.")
+        if bool(self.category) == bool(self.subcategory):
+            raise ValidationError("Select either a category or a sub category, not both.")
 
 
 class ProductItem(models.Model):
